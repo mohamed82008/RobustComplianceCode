@@ -10,12 +10,13 @@ E = 1.0; v = 0.3; xmin = 0.001;
 filterT = DensityFilter
 dim = 2
 
-out_root = "E:/Mohamed/RobustComplianceResults/"
+out_root = "/users/mohd/JuliaEnvironments/RobustComplianceCode/results"
 
 @assert isdir(out_root) "Results directory not set properly."
 
 if dim == 2
     out_dir = "$out_root/results_2d"
+    isdir(out_dir) || mkdir(out_dir)
     rmin = 2.0; V = 0.4
 
     base_problem = PointLoadCantilever(Val{:Linear}, (160, 40), (1.0, 1.0), E, v)
@@ -27,6 +28,7 @@ if dim == 2
     nels = 160*40
 else
     out_dir = "$out_root/results_3d"
+    isdir(out_dir) || mkdir(out_dir)
     rmin = 3.0; V = 0.4
 
     base_problem = PointLoadCantilever(Val{:Linear}, (60, 20, 20), (1.0, 1.0, 1.0), E, v)

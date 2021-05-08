@@ -69,4 +69,4 @@ function plot_histo(run=true)
         end
     end
 end
-plot_histo(false)
+plot_histo(true)

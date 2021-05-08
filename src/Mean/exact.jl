@@ -160,7 +160,7 @@ if TopOpt.TopOptProblems.getdim(problem) == 2
     image = TopOptProblems.RectilinearTopology(problem, solver.penalty.proj.(filterT(Val(true), solver, rmin)(result.topology)))
     PyPlot.imshow(image, cmap="Greys", origin="lower")
     savefig("$fname.png")
-    close()
+    PyPlot.close()
 end
 save(
     "$fname.jld2",

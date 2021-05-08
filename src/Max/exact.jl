@@ -135,7 +135,7 @@ end
 
 fname = "$out_dir/exact_svd_max_csimp"
 if TopOpt.TopOptProblems.getdim(problem) == 2
-    image = TopOptProblems.RectilinearTopology(problem, solver.penalty.proj.(filterT(Val(true), solver, rmin)(result.topology)))
+    image = TopOptProblems.RectilinearTopology(problem, solver.penalty.proj.(filterT(Val(true), solver, rmin)(result.minimizer)))
     PyPlot.imshow(image, cmap="Greys", origin="lower")
     savefig("$fname.png")
     close()
@@ -145,7 +145,7 @@ save(
     Dict("problem" => problem, "result" => result),
 )
 println("...............")
-save_mesh(fname, problem, solver.penalty.proj.(filterT(Val(true), solver, rmin)(result.topology)))
+save_mesh(fname, problem, solver.penalty.proj.(filterT(Val(true), solver, rmin)(result.minimizer)))
 
 @show maximum(exact_svd_block(result.minimizer))
 @show obj(result.minimizer)
